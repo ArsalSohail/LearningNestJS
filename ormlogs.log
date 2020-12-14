@@ -1,0 +1,204 @@
+[2020-12-10T13:43:13.454Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products"
+[2020-12-10T13:45:44.347Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products"
+[2020-12-10T13:49:50.361Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products"
+[2020-12-10T13:50:09.492Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products"
+[2020-12-10T14:06:10.026Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products"
+[2020-12-10T14:07:54.999Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products"
+[2020-12-10T14:28:06.883Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products" WHERE "Products"."Product_ID" IN (@0) -- PARAMETERS: [3]
+[2020-12-10T14:28:06.956Z][QUERY]: BEGIN TRANSACTION
+[2020-12-10T14:28:06.963Z][QUERY]: DECLARE @OutputTable TABLE ("Product_ID" int);
+
+INSERT INTO "Products"("Product_Name", "Product_Type", "Availability_Status", "Stock_Qty", "Price") OUTPUT INSERTED."Product_ID" INTO @OutputTable VALUES (@0, @1, DEFAULT, @2, @3);
+
+SELECT * FROM @OutputTable -- PARAMETERS: [{"value":"abcdef","type":"nvarchar","params":[]},{"value":"5","type":"nvarchar","params":[]},{"value":45,"type":"int","params":[]},{"value":300,"type":"int","params":[]}]
+[2020-12-10T14:28:07.229Z][FAILED QUERY]: DECLARE @OutputTable TABLE ("Product_ID" int);
+
+INSERT INTO "Products"("Product_Name", "Product_Type", "Availability_Status", "Stock_Qty", "Price") OUTPUT INSERTED."Product_ID" INTO @OutputTable VALUES (@0, @1, DEFAULT, @2, @3);
+
+SELECT * FROM @OutputTable -- PARAMETERS: [{"value":"abcdef","type":"nvarchar","params":[]},{"value":"5","type":"nvarchar","params":[]},{"value":45,"type":"int","params":[]},{"value":300,"type":"int","params":[]}]
+[2020-12-10T14:28:07.229Z][QUERY ERROR]: RequestError: Cannot insert the value NULL into column 'Availability_Status', table 'ShoppingApp.dbo.Products'; column does not allow nulls. INSERT fails.
+[2020-12-10T14:28:07.236Z][QUERY]: ROLLBACK
+[2020-12-10T14:29:12.193Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products" WHERE "Products"."Product_ID" IN (@0) -- PARAMETERS: [3]
+[2020-12-10T14:29:12.236Z][QUERY]: BEGIN TRANSACTION
+[2020-12-10T14:29:12.242Z][QUERY]: DECLARE @OutputTable TABLE ("Product_ID" int);
+
+INSERT INTO "Products"("Product_Name", "Product_Type", "Availability_Status", "Stock_Qty", "Price") OUTPUT INSERTED."Product_ID" INTO @OutputTable VALUES (@0, @1, @2, @3, @4);
+
+SELECT * FROM @OutputTable -- PARAMETERS: [{"value":"abcdef","type":"nvarchar","params":[]},{"value":"5","type":"nvarchar","params":[]},{"value":1,"type":"bit","params":[]},{"value":45,"type":"int","params":[]},{"value":300,"type":"int","params":[]}]
+[2020-12-10T14:29:12.254Z][FAILED QUERY]: DECLARE @OutputTable TABLE ("Product_ID" int);
+
+INSERT INTO "Products"("Product_Name", "Product_Type", "Availability_Status", "Stock_Qty", "Price") OUTPUT INSERTED."Product_ID" INTO @OutputTable VALUES (@0, @1, @2, @3, @4);
+
+SELECT * FROM @OutputTable -- PARAMETERS: [{"value":"abcdef","type":"nvarchar","params":[]},{"value":"5","type":"nvarchar","params":[]},{"value":1,"type":"bit","params":[]},{"value":45,"type":"int","params":[]},{"value":300,"type":"int","params":[]}]
+[2020-12-10T14:29:12.254Z][QUERY ERROR]: RequestError: Cannot insert the value NULL into column 'Product_ID', table 'ShoppingApp.dbo.Products'; column does not allow nulls. INSERT fails.
+[2020-12-10T14:29:12.260Z][QUERY]: ROLLBACK
+[2020-12-10T14:31:37.879Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products" WHERE "Products"."Product_ID" IN (@0) -- PARAMETERS: [3]
+[2020-12-10T14:31:37.928Z][QUERY]: BEGIN TRANSACTION
+[2020-12-10T14:31:37.935Z][QUERY]: DECLARE @OutputTable TABLE ("Product_ID" int);
+
+INSERT INTO "Products"("Product_Name", "Product_Type", "Availability_Status", "Stock_Qty", "Price") OUTPUT INSERTED."Product_ID" INTO @OutputTable VALUES (@0, @1, @2, @3, @4);
+
+SELECT * FROM @OutputTable -- PARAMETERS: [{"value":"abcdef","type":"nvarchar","params":[]},{"value":"5","type":"nvarchar","params":[]},{"value":1,"type":"bit","params":[]},{"value":45,"type":"int","params":[]},{"value":300,"type":"int","params":[]}]
+[2020-12-10T14:31:37.946Z][FAILED QUERY]: DECLARE @OutputTable TABLE ("Product_ID" int);
+
+INSERT INTO "Products"("Product_Name", "Product_Type", "Availability_Status", "Stock_Qty", "Price") OUTPUT INSERTED."Product_ID" INTO @OutputTable VALUES (@0, @1, @2, @3, @4);
+
+SELECT * FROM @OutputTable -- PARAMETERS: [{"value":"abcdef","type":"nvarchar","params":[]},{"value":"5","type":"nvarchar","params":[]},{"value":1,"type":"bit","params":[]},{"value":45,"type":"int","params":[]},{"value":300,"type":"int","params":[]}]
+[2020-12-10T14:31:37.946Z][QUERY ERROR]: RequestError: Cannot insert the value NULL into column 'Product_ID', table 'ShoppingApp.dbo.Products'; column does not allow nulls. INSERT fails.
+[2020-12-10T14:31:37.950Z][QUERY]: ROLLBACK
+[2020-12-10T14:32:53.204Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products"
+[2020-12-10T14:33:05.116Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products" WHERE "Products"."Product_ID" IN (@0) -- PARAMETERS: [3]
+[2020-12-10T14:33:05.122Z][QUERY]: BEGIN TRANSACTION
+[2020-12-10T14:33:05.123Z][QUERY]: DECLARE @OutputTable TABLE ("Product_ID" int);
+
+INSERT INTO "Products"("Product_Name", "Product_Type", "Availability_Status", "Stock_Qty", "Price") OUTPUT INSERTED."Product_ID" INTO @OutputTable VALUES (@0, @1, @2, @3, @4);
+
+SELECT * FROM @OutputTable -- PARAMETERS: [{"value":"abcdef","type":"nvarchar","params":[]},{"value":"5","type":"nvarchar","params":[]},{"value":0,"type":"bit","params":[]},{"value":45,"type":"int","params":[]},{"value":300,"type":"int","params":[]}]
+[2020-12-10T14:33:05.132Z][FAILED QUERY]: DECLARE @OutputTable TABLE ("Product_ID" int);
+
+INSERT INTO "Products"("Product_Name", "Product_Type", "Availability_Status", "Stock_Qty", "Price") OUTPUT INSERTED."Product_ID" INTO @OutputTable VALUES (@0, @1, @2, @3, @4);
+
+SELECT * FROM @OutputTable -- PARAMETERS: [{"value":"abcdef","type":"nvarchar","params":[]},{"value":"5","type":"nvarchar","params":[]},{"value":0,"type":"bit","params":[]},{"value":45,"type":"int","params":[]},{"value":300,"type":"int","params":[]}]
+[2020-12-10T14:33:05.132Z][QUERY ERROR]: RequestError: Cannot insert the value NULL into column 'Product_ID', table 'ShoppingApp.dbo.Products'; column does not allow nulls. INSERT fails.
+[2020-12-10T14:33:05.134Z][QUERY]: ROLLBACK
+[2020-12-10T14:34:05.578Z][QUERY]: BEGIN TRANSACTION
+[2020-12-10T14:34:05.579Z][QUERY]: DECLARE @OutputTable TABLE ("Product_ID" int);
+
+INSERT INTO "Products"("Product_Name", "Product_Type", "Availability_Status", "Stock_Qty", "Price") OUTPUT INSERTED."Product_ID" INTO @OutputTable VALUES (@0, @1, @2, @3, @4);
+
+SELECT * FROM @OutputTable -- PARAMETERS: [{"value":"abcdef","type":"nvarchar","params":[]},{"value":"5","type":"nvarchar","params":[]},{"value":0,"type":"bit","params":[]},{"value":45,"type":"int","params":[]},{"value":300,"type":"int","params":[]}]
+[2020-12-10T14:34:05.588Z][FAILED QUERY]: DECLARE @OutputTable TABLE ("Product_ID" int);
+
+INSERT INTO "Products"("Product_Name", "Product_Type", "Availability_Status", "Stock_Qty", "Price") OUTPUT INSERTED."Product_ID" INTO @OutputTable VALUES (@0, @1, @2, @3, @4);
+
+SELECT * FROM @OutputTable -- PARAMETERS: [{"value":"abcdef","type":"nvarchar","params":[]},{"value":"5","type":"nvarchar","params":[]},{"value":0,"type":"bit","params":[]},{"value":45,"type":"int","params":[]},{"value":300,"type":"int","params":[]}]
+[2020-12-10T14:34:05.588Z][QUERY ERROR]: RequestError: Cannot insert the value NULL into column 'Product_ID', table 'ShoppingApp.dbo.Products'; column does not allow nulls. INSERT fails.
+[2020-12-10T14:34:05.590Z][QUERY]: ROLLBACK
+[2020-12-10T14:37:36.292Z][QUERY]: BEGIN TRANSACTION
+[2020-12-10T14:37:36.293Z][QUERY]: DECLARE @OutputTable TABLE ("Product_ID" int);
+
+INSERT INTO "Products"("Product_Name", "Product_Type", "Availability_Status", "Stock_Qty", "Price") OUTPUT INSERTED."Product_ID" INTO @OutputTable VALUES (@0, @1, @2, @3, @4);
+
+SELECT * FROM @OutputTable -- PARAMETERS: [{"value":"abcdef","type":"nvarchar","params":[]},{"value":"5","type":"nvarchar","params":[]},{"value":0,"type":"bit","params":[]},{"value":45,"type":"int","params":[]},{"value":300,"type":"int","params":[]}]
+[2020-12-10T14:37:36.429Z][QUERY]: COMMIT
+[2020-12-10T14:37:46.394Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products"
+[2020-12-10T14:50:04.351Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products"
+[2020-12-10T14:50:37.599Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products" WHERE "Products"."Product_ID" IN (@0) -- PARAMETERS: [9]
+[2020-12-10T14:50:37.633Z][QUERY]: BEGIN TRANSACTION
+[2020-12-10T14:50:37.640Z][QUERY]: DECLARE @OutputTable TABLE ("Product_ID" int);
+
+INSERT INTO "Products"("Product_Name", "Product_Type", "Availability_Status", "Stock_Qty", "Price") OUTPUT INSERTED."Product_ID" INTO @OutputTable VALUES (@0, @1, @2, @3, @4);
+
+SELECT * FROM @OutputTable -- PARAMETERS: [{"value":"Nokia","type":"nvarchar","params":[]},{"value":"5","type":"nvarchar","params":[]},{"value":0,"type":"bit","params":[]},{"value":45,"type":"int","params":[]},{"value":300,"type":"int","params":[]}]
+[2020-12-10T14:50:37.728Z][QUERY]: COMMIT
+[2020-12-10T14:50:45.103Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products"
+[2020-12-10T14:50:58.660Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products" WHERE "Products"."Product_ID" IN (@0) -- PARAMETERS: [9]
+[2020-12-10T14:50:58.664Z][QUERY]: BEGIN TRANSACTION
+[2020-12-10T14:50:58.665Z][QUERY]: DECLARE @OutputTable TABLE ("Product_ID" int);
+
+INSERT INTO "Products"("Product_Name", "Product_Type", "Availability_Status", "Stock_Qty", "Price") OUTPUT INSERTED."Product_ID" INTO @OutputTable VALUES (@0, @1, @2, @3, @4);
+
+SELECT * FROM @OutputTable -- PARAMETERS: [{"value":"Nokia","type":"nvarchar","params":[]},{"value":"5","type":"nvarchar","params":[]},{"value":0,"type":"bit","params":[]},{"value":45,"type":"int","params":[]},{"value":300,"type":"int","params":[]}]
+[2020-12-10T14:50:58.694Z][QUERY]: COMMIT
+[2020-12-10T14:51:04.957Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products"
+[2020-12-10T14:51:35.189Z][QUERY]: BEGIN TRANSACTION
+[2020-12-10T14:51:35.190Z][QUERY]: DECLARE @OutputTable TABLE ("Product_ID" int);
+
+INSERT INTO "Products"("Product_Name", "Product_Type", "Availability_Status", "Stock_Qty", "Price") OUTPUT INSERTED."Product_ID" INTO @OutputTable VALUES (@0, @1, @2, @3, @4);
+
+SELECT * FROM @OutputTable -- PARAMETERS: [{"value":"Samsung","type":"nvarchar","params":[]},{"value":"5","type":"nvarchar","params":[]},{"value":0,"type":"bit","params":[]},{"value":45,"type":"int","params":[]},{"value":300,"type":"int","params":[]}]
+[2020-12-10T14:51:35.243Z][QUERY]: COMMIT
+[2020-12-10T14:51:40.664Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products"
+[2020-12-10T15:11:41.115Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products"
+[2020-12-10T15:11:48.247Z][QUERY]: BEGIN TRANSACTION
+[2020-12-10T15:11:48.257Z][QUERY]: DECLARE @OutputTable TABLE ("Product_ID" int);
+
+INSERT INTO "Products"("Product_Name", "Product_Type", "Availability_Status", "Stock_Qty", "Price") OUTPUT INSERTED."Product_ID" INTO @OutputTable VALUES (@0, @1, @2, @3, @4);
+
+SELECT * FROM @OutputTable -- PARAMETERS: [{"value":"Apple","type":"nvarchar","params":[]},{"value":"5","type":"nvarchar","params":[]},{"value":0,"type":"bit","params":[]},{"value":45,"type":"int","params":[]},{"value":300,"type":"int","params":[]}]
+[2020-12-10T15:11:48.341Z][QUERY]: COMMIT
+[2020-12-10T15:21:08.221Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products"
+[2020-12-10T15:21:36.009Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products" WHERE "Products"."Product_ID" IN (@0) -- PARAMETERS: [1]
+[2020-12-10T15:21:49.337Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products"
+[2020-12-10T15:24:52.006Z][QUERY]: BEGIN TRANSACTION
+[2020-12-10T15:24:52.015Z][QUERY]: DECLARE @OutputTable TABLE ("Product_ID" int);
+
+INSERT INTO "Products"("Product_Name", "Product_Type", "Availability_Status", "Stock_Qty", "Price") OUTPUT INSERTED."Product_ID" INTO @OutputTable VALUES (@0, DEFAULT, DEFAULT, DEFAULT, DEFAULT);
+
+SELECT * FROM @OutputTable -- PARAMETERS: [{"value":"Lenovo","type":"nvarchar","params":[]}]
+[2020-12-10T15:24:52.122Z][FAILED QUERY]: DECLARE @OutputTable TABLE ("Product_ID" int);
+
+INSERT INTO "Products"("Product_Name", "Product_Type", "Availability_Status", "Stock_Qty", "Price") OUTPUT INSERTED."Product_ID" INTO @OutputTable VALUES (@0, DEFAULT, DEFAULT, DEFAULT, DEFAULT);
+
+SELECT * FROM @OutputTable -- PARAMETERS: [{"value":"Lenovo","type":"nvarchar","params":[]}]
+[2020-12-10T15:24:52.122Z][QUERY ERROR]: RequestError: Cannot insert the value NULL into column 'Product_Type', table 'ShoppingApp.dbo.Products'; column does not allow nulls. INSERT fails.
+[2020-12-10T15:24:52.127Z][QUERY]: ROLLBACK
+[2020-12-10T15:28:58.606Z][QUERY]: BEGIN TRANSACTION
+[2020-12-10T15:28:58.614Z][QUERY]: DECLARE @OutputTable TABLE ("Product_ID" int);
+
+INSERT INTO "Products"("Product_Name", "Product_Type", "Availability_Status", "Stock_Qty", "Price") OUTPUT INSERTED."Product_ID" INTO @OutputTable VALUES (@0, DEFAULT, DEFAULT, DEFAULT, DEFAULT);
+
+SELECT * FROM @OutputTable -- PARAMETERS: [{"value":"Lenovo","type":"nvarchar","params":[]}]
+[2020-12-10T15:28:58.763Z][FAILED QUERY]: DECLARE @OutputTable TABLE ("Product_ID" int);
+
+INSERT INTO "Products"("Product_Name", "Product_Type", "Availability_Status", "Stock_Qty", "Price") OUTPUT INSERTED."Product_ID" INTO @OutputTable VALUES (@0, DEFAULT, DEFAULT, DEFAULT, DEFAULT);
+
+SELECT * FROM @OutputTable -- PARAMETERS: [{"value":"Lenovo","type":"nvarchar","params":[]}]
+[2020-12-10T15:28:58.763Z][QUERY ERROR]: RequestError: Cannot insert the value NULL into column 'Product_Type', table 'ShoppingApp.dbo.Products'; column does not allow nulls. INSERT fails.
+[2020-12-10T15:28:58.767Z][QUERY]: ROLLBACK
+[2020-12-10T15:29:00.246Z][QUERY]: BEGIN TRANSACTION
+[2020-12-10T15:29:00.247Z][QUERY]: DECLARE @OutputTable TABLE ("Product_ID" int);
+
+INSERT INTO "Products"("Product_Name", "Product_Type", "Availability_Status", "Stock_Qty", "Price") OUTPUT INSERTED."Product_ID" INTO @OutputTable VALUES (@0, DEFAULT, DEFAULT, DEFAULT, DEFAULT);
+
+SELECT * FROM @OutputTable -- PARAMETERS: [{"value":"Lenovo","type":"nvarchar","params":[]}]
+[2020-12-10T15:29:00.252Z][FAILED QUERY]: DECLARE @OutputTable TABLE ("Product_ID" int);
+
+INSERT INTO "Products"("Product_Name", "Product_Type", "Availability_Status", "Stock_Qty", "Price") OUTPUT INSERTED."Product_ID" INTO @OutputTable VALUES (@0, DEFAULT, DEFAULT, DEFAULT, DEFAULT);
+
+SELECT * FROM @OutputTable -- PARAMETERS: [{"value":"Lenovo","type":"nvarchar","params":[]}]
+[2020-12-10T15:29:00.252Z][QUERY ERROR]: RequestError: Cannot insert the value NULL into column 'Product_Type', table 'ShoppingApp.dbo.Products'; column does not allow nulls. INSERT fails.
+[2020-12-10T15:29:00.254Z][QUERY]: ROLLBACK
+[2020-12-10T15:29:16.832Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products" WHERE "Products"."Product_ID" IN (@0) -- PARAMETERS: [1]
+[2020-12-10T15:29:36.328Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products" WHERE "Products"."Product_ID" IN (@0) -- PARAMETERS: [1]
+[2020-12-10T15:29:36.374Z][QUERY]: BEGIN TRANSACTION
+[2020-12-10T15:29:36.378Z][QUERY]: UPDATE "Products" SET "Product_Name" = @1 WHERE "Product_ID" IN (@0) -- PARAMETERS: [1,{"value":"Lenovo","type":"nvarchar","params":[]}]
+[2020-12-10T15:29:36.491Z][QUERY]: COMMIT
+[2020-12-10T15:29:53.787Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products"
+[2020-12-10T15:32:28.040Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products" WHERE "Products"."Product_ID" IN (@0) -- PARAMETERS: [3]
+[2020-12-10T15:32:28.220Z][QUERY]: BEGIN TRANSACTION
+[2020-12-10T15:32:28.226Z][QUERY]: UPDATE "Products" SET "Product_Name" = @1, "Product_Type" = @2, "Availability_Status" = @3 WHERE "Product_ID" IN (@0) -- PARAMETERS: [3,{"value":"Happy","type":"nvarchar","params":[]},{"value":"1","type":"nvarchar","params":[]},{"value":1,"type":"bit","params":[]}]
+[2020-12-10T15:32:28.289Z][QUERY]: COMMIT
+[2020-12-10T15:32:34.076Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products"
+[2020-12-11T15:12:16.986Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products"
+[2020-12-14T10:11:12.584Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products"
+[2020-12-14T10:11:53.530Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products"
+[2020-12-14T10:12:07.415Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products"
+[2020-12-14T10:12:19.003Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products"
+[2020-12-14T10:12:37.015Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products"
+[2020-12-14T10:13:13.200Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products"
+[2020-12-14T10:14:14.162Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products"
+[2020-12-14T10:14:20.473Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products"
+[2020-12-14T10:22:08.656Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products"
+[2020-12-14T11:22:37.728Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products"
+[2020-12-14T11:32:37.753Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products"
+[2020-12-14T11:36:34.857Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products"
+[2020-12-14T11:37:54.678Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products"
+[2020-12-14T11:45:36.294Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products"
+[2020-12-14T11:47:05.789Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products"
+[2020-12-14T11:53:07.950Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products"
+[2020-12-14T12:05:14.719Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products"
+[2020-12-14T12:05:16.493Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products"
+[2020-12-14T12:19:47.092Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products"
+[2020-12-14T12:20:00.447Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products"
+[2020-12-14T12:23:28.720Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products"
+[2020-12-14T12:24:05.980Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products"
+[2020-12-14T12:24:17.176Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products"
+[2020-12-14T12:24:54.195Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products"
+[2020-12-14T12:25:47.970Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products"
+[2020-12-14T12:25:49.582Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products"
+[2020-12-14T12:26:05.381Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products"
+[2020-12-14T12:27:26.599Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products"
+[2020-12-14T12:27:27.182Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products"
+[2020-12-14T12:27:32.376Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products"
+[2020-12-14T12:44:10.965Z][QUERY]: SELECT "Products"."Product_ID" AS "Products_Product_ID", "Products"."Product_Name" AS "Products_Product_Name", "Products"."Product_Type" AS "Products_Product_Type", "Products"."Availability_Status" AS "Products_Availability_Status", "Products"."Stock_Qty" AS "Products_Stock_Qty", "Products"."Price" AS "Products_Price" FROM "Products" "Products"
